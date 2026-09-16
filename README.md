@@ -4,9 +4,9 @@ Leo AI is a personal AI Assistant Automation Platform. It is being developed for
 
 ## Project Status
 
-Very early development / foundation stage.
+Active development — Phase 1 (Application Workspace Architecture).
 
-No AI assistant functionality exists yet. This repository contains only the project foundation (README, LICENSE, .gitignore, and a three-branch Git structure).
+No application functionality has been implemented yet. This repository contains the project foundation (README, LICENSE, .gitignore, Git branch structure) and the architectural plan (repository structure and documentation).
 
 ## Target Platforms
 
@@ -30,6 +30,44 @@ The following capabilities are **planned** and **NOT currently implemented**:
 - Windows integration
 - Android integration
 
+## Architecture
+
+The system follows a layered, modular architecture where business logic lives in the backend and clients handle only the user interface and local platform interaction.
+
+```
+Client Applications (Windows, Android, Web)
+        ↓
+Core API
+        ↓
+Assistant / Orchestration Layer
+        ↓
+Tools / Services
+        ↓
+Database / External Integrations
+```
+
+See [docs/architecture.md](docs/architecture.md) for the full architecture specification.
+
+### Repository Structure
+
+```
+Leo-AI/
+│
+├── apps/
+│   ├── web/       → Future browser/web interface
+│   ├── windows/   → Future Windows desktop client
+│   └── android/   → Future Android client
+│
+├── server/        → Future core backend/API and business logic
+├── shared/        → Future shared types, contracts, and utilities
+├── docs/          → Architecture and technical documentation
+├── scripts/       → Future development/maintenance scripts
+│
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
 ## Development Philosophy
 
 - **Local-first** where practical — keep user data on the user's own machine.
@@ -51,7 +89,9 @@ Development flow: `dev` → `test` → `main`
 
 ## Current Phase
 
-Phase 0 — Repository Foundation
+Phase 1 — Application Workspace Architecture
+
+See the [development roadmap](docs/architecture.md#13-future-development-phases).
 
 ## Repository
 
