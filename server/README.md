@@ -1,15 +1,79 @@
-# Server
+# Leo AI Server
 
-Future core backend/API and business logic for Leo AI.
+Core backend for Leo AI — a personal AI Assistant Automation Platform.
 
-## Responsibility
+## Purpose
 
-- Expose the Core API for all clients (Windows, Android, web).
-- House the Assistant / Orchestration Layer.
-- Contain all backend business logic modules.
-- Provide tool/service interfaces for sensitive operations.
+Exposes a simple Express + TypeScript HTTP server. This is the runtime foundation that future backend modules (authentication, assistant, conversations, tools, etc.) will build upon.
 
-## Planned Modules
+## Technology
+
+- Node.js
+- TypeScript
+- Express
+
+## Current Scope
+
+Only the minimal Express runtime foundation exists at this stage:
+
+- A single `GET /` endpoint that returns a startup verification message.
+- Development, build, and typecheck scripts.
+
+No API routes, database connections, authentication, AI, or business logic have been implemented. Only what is necessary to prove that **Node.js → TypeScript → Express → HTTP** works correctly.
+
+## Prerequisites
+
+- Node.js (v22 or later recommended)
+- npm
+
+## Install Dependencies
+
+```bash
+cd server
+npm install
+```
+
+## Development Server
+
+Runs the TypeScript server directly using `tsx` (no manual compilation required):
+
+```bash
+npm run dev
+```
+
+The server starts on port **3001** (or the port specified in `PORT` environment variable).
+
+## Build
+
+Compiles TypeScript into `dist/`:
+
+```bash
+npm run build
+```
+
+## Production Start
+
+Runs the compiled JavaScript from `dist/`:
+
+```bash
+npm run start
+```
+
+## Typecheck
+
+Checks TypeScript types without producing output:
+
+```bash
+npm run typecheck
+```
+
+## Port
+
+Default development port: **3001**
+
+## Planned Modules (Future)
+
+The following modules are documented in the architecture but NOT yet implemented:
 
 - authentication
 - assistant
@@ -23,7 +87,3 @@ Future core backend/API and business logic for Leo AI.
 - tools
 - permissions
 - audit logs
-
-## Status
-
-**PLANNED** — Not yet implemented. No dependencies have been installed.

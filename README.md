@@ -4,9 +4,9 @@ Leo AI is a personal AI Assistant Automation Platform. It is being developed for
 
 ## Project Status
 
-Active development — Phase 1 (Application Workspace Architecture).
+Active development — Phase 2 (Backend Foundation).
 
-No application functionality has been implemented yet. This repository contains the project foundation (README, LICENSE, .gitignore, Git branch structure) and the architectural plan (repository structure and documentation).
+No application functionality has been implemented yet. The repository foundation (Task 01) and architectural workspace (Task 02) are complete. The backend runtime foundation (Task 03) is now being established with a minimal Node.js + TypeScript + Express server.
 
 ## Target Platforms
 
@@ -58,7 +58,7 @@ Leo-AI/
 │   ├── windows/   → Future Windows desktop client
 │   └── android/   → Future Android client
 │
-├── server/        → Future core backend/API and business logic
+├── server/        → Backend runtime (Express + TypeScript)
 ├── shared/        → Future shared types, contracts, and utilities
 ├── docs/          → Architecture and technical documentation
 ├── scripts/       → Future development/maintenance scripts
@@ -89,7 +89,7 @@ Development flow: `dev` → `test` → `main`
 
 ## Current Phase
 
-Phase 1 — Application Workspace Architecture
+Phase 2 — Backend Foundation
 
 See the [development roadmap](docs/architecture.md#13-future-development-phases).
 
