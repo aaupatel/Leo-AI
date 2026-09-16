@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+*/node_modules/
+.npm
+.yarn-cache
+.pnpm-store
+
+# Environment files containing secrets
+.env
+.env.local
+.env.*.local
+.envrc
+.direnv/
+.config/argon/
+
+# Build / distribution output
+dist/
+build/
+out/
+.output/
+*.tsbuildinfo
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-*
+*.code-workspace
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Logs
+*.log
+logs/
+.logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.orig
+.cache/
+
+# Kilo tooling state (session state, not project code)
+.kilo/worktrees/
+
+# Coverage
+coverage/
+*.lcov
+
+# Executable files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
