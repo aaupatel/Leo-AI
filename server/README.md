@@ -33,6 +33,36 @@ cd server
 npm install
 ```
 
+## Configuration
+
+The backend uses `dotenv` to load environment variables from a `server/.env` file. A template is provided:
+
+- `.env.example` — example configuration (committed, safe to share)
+- `.env` — local configuration (ignored by Git, must never be committed)
+
+### Environment Variables
+
+| Variable   | Description                            | Default       |
+| ---------- | -------------------------------------- | ------------- |
+| `NODE_ENV` | Environment mode (e.g., `development`) | `development` |
+| `PORT`     | HTTP server port                       | `3001`        |
+
+### Validation
+
+- `PORT` must be a valid integer between 1 and 65535. An invalid value causes a clear startup error.
+- If `PORT` is missing, it defaults to `3001`.
+- If `NODE_ENV` is missing, it defaults to `development`.
+
+### `.env`
+
+Create a local `.env` file for development:
+
+```bash
+cp .env.example .env
+```
+
+> **Important:** The `.env` file contains local configuration and must not be committed. It is ignored by Git via `.gitignore`.
+
 ## Development Server
 
 Runs the TypeScript server directly using `tsx` (no manual compilation required):

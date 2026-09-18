@@ -6,7 +6,7 @@ Leo AI is a personal AI Assistant Automation Platform. It is being developed for
 
 Active development — Phase 2 (Backend Foundation).
 
-No application functionality has been implemented yet. The repository foundation (Task 01) and architectural workspace (Task 02) are complete. The backend runtime foundation (Task 03) is now being established with a minimal Node.js + TypeScript + Express server.
+No application functionality has been implemented yet. The backend foundation (Tasks 03–05) is established with a Node.js + TypeScript + Express server, code quality tooling (ESLint + Prettier), and environment configuration (dotenv).
 
 ## Target Platforms
 
