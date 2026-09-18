@@ -67,6 +67,32 @@ Checks TypeScript types without producing output:
 npm run typecheck
 ```
 
+## Code Quality
+
+### Linting (ESLint)
+
+ESLint checks source code for correctness issues. TypeScript-aware rules are enabled via `typescript-eslint`. ESLint configuration lives in `eslint.config.mjs`.
+
+```bash
+npm run lint        # check source code
+npm run lint:fix    # automatically fix safe issues
+```
+
+### Formatting (Prettier)
+
+Prettier handles code formatting. Formatting configuration lives in `.prettierrc`.
+
+```bash
+npm run format          # format source files
+npm run format:check    # verify formatting without changing files
+```
+
+### Typecheck
+
+```bash
+npm run typecheck
+```
+
 ## Port
 
 Default development port: **3001**
