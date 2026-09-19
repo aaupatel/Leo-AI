@@ -23,6 +23,7 @@ function parsePort(raw: string | undefined): number {
 const config = {
   port: parsePort(process.env.PORT),
   nodeEnv: process.env.NODE_ENV ?? DEFAULT_NODE_ENV,
+  databaseUrl: process.env.DATABASE_URL ?? '',
 };
 
 export { config };

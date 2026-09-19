@@ -14,12 +14,15 @@ Exposes a simple Express + TypeScript HTTP server. This is the runtime foundatio
 
 ## Current Scope
 
-Only the minimal Express runtime foundation exists at this stage:
+Only the following exists at this stage:
 
 - A single `GET /` endpoint that returns a startup verification message.
 - Development, build, and typecheck scripts.
+- Code quality tooling (ESLint + Prettier).
+- Environment configuration via `dotenv`.
+- PostgreSQL connection pool with a `SELECT 1` connectivity test.
 
-No API routes, database connections, authentication, AI, or business logic have been implemented. Only what is necessary to prove that **Node.js → TypeScript → Express → HTTP** works correctly.
+No API routes, authentication, AI, or business logic have been implemented. Only what is necessary to prove that **Node.js → TypeScript → Express → PostgreSQL** works correctly.
 
 ## Prerequisites
 
@@ -42,10 +45,11 @@ The backend uses `dotenv` to load environment variables from a `server/.env` fil
 
 ### Environment Variables
 
-| Variable   | Description                            | Default       |
-| ---------- | -------------------------------------- | ------------- |
-| `NODE_ENV` | Environment mode (e.g., `development`) | `development` |
-| `PORT`     | HTTP server port                       | `3001`        |
+| Variable       | Description                            | Default       |
+| -------------- | -------------------------------------- | ------------- |
+| `NODE_ENV`     | Environment mode (e.g., `development`) | `development` |
+| `PORT`         | HTTP server port                       | `3001`        |
+| `DATABASE_URL` | PostgreSQL connection string           | (none)        |
 
 ### Validation
 
@@ -126,6 +130,40 @@ npm run typecheck
 ## Port
 
 Default development port: **3001**
+
+## Database
+
+PostgreSQL is the planned primary database for Leo AI. The `pg` Node.js driver is used for direct connection (no ORM).
+
+### Connection
+
+Configuration is centralized — the `DATABASE_URL` environment variable is read from the configuration module (`src/config/index.ts`), not directly from `process.env` in database code.
+
+### Connection Pool
+
+The database module (`src/database/index.ts`) creates a single reusable `Pool` instance with reasonable development defaults:
+
+- `max`: 10 connections
+- `idleTimeoutMillis`: 30 000 ms
+- `connectionTimeoutMillis`: 5 000 ms
+
+### Connectivity Test
+
+On startup, the server runs `SELECT 1` to verify PostgreSQL is reachable. A successful connection logs `Database connection established.` A failure logs `Database connection failed.` with a sanitized error message (connection strings are redacted). The server still starts even if the database is unavailable.
+
+### Shutdown
+
+On `SIGINT` or `SIGTERM`, the connection pool closes gracefully before the process exits.
+
+### `.env`
+
+Add your PostgreSQL connection string to `server/.env`:
+
+```
+DATABASE_URL=postgresql://user:password@localhost:5432/leo_ai
+```
+
+> **No database schema or application tables have been implemented yet.**
 
 ## Planned Modules (Future)
 
