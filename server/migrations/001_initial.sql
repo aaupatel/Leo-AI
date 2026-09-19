@@ -1,0 +1,2 @@
+-- 001_initial.sql
+-- Application schema migrations will begin in a later task.

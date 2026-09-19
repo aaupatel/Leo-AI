@@ -165,6 +165,34 @@ DATABASE_URL=postgresql://user:password@localhost:5432/leo_ai
 
 > **No database schema or application tables have been implemented yet.**
 
+## Database Migrations
+
+Migrations are plain SQL files stored in `server/migrations/`. Files are numbered for ordering (e.g., `001_initial.sql`).
+
+### Migration Tracking
+
+A `schema_migrations` table records which migrations have been applied. This table is created automatically by the migration runner — it is **not** a migration file.
+
+### Running Migrations
+
+```bash
+npm run db:migrate
+```
+
+Migrations do **not** run automatically when the server starts.
+
+### How It Works
+
+1. The runner ensures `schema_migrations` exists.
+2. Migration files are discovered and sorted by filename.
+3. Each pending migration runs inside a transaction (`BEGIN` → SQL → record → `COMMIT`).
+4. Failed migrations are rolled back (`ROLLBACK`) and not recorded.
+5. The same migration never runs twice.
+
+### Current Migrations
+
+No application tables have been created. The only database infrastructure is the `schema_migrations` tracking table.
+
 ## Planned Modules (Future)
 
 The following modules are documented in the architecture but NOT yet implemented:
