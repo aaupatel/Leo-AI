@@ -4,7 +4,8 @@ import {
   findUserByEmail,
   updateUser,
 } from '../repositories/users.repository';
-import type { User } from '../repositories/types';
+import { createSession } from '../repositories/sessions.repository';
+import type { User, Session } from '../repositories/types';
 
 export async function createUserAuth(email: string, displayName: string): Promise<User> {
   return createUser(email, displayName);
@@ -23,4 +24,13 @@ export async function updateUserAuth(
   updates: Partial<Pick<User, 'email' | 'displayName'>>,
 ): Promise<User | null> {
   return updateUser(id, updates);
+}
+
+export async function createSessionAuth(
+  userId: string,
+  tokenHash: string,
+  expiresAt: Date,
+  deviceId: string | null = null,
+): Promise<Session> {
+  return createSession(userId, tokenHash, expiresAt, deviceId);
 }
