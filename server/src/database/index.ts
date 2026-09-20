@@ -1,4 +1,4 @@
-import { Pool } from 'pg';
+import { Pool, QueryResult, QueryResultRow } from 'pg';
 import { config } from '../config';
 
 const pool = new Pool({
@@ -28,4 +28,6 @@ function sanitizeErrorMessage(error: unknown): string {
   return 'Unknown error';
 }
 
-export { pool, testConnection, closePool, sanitizeErrorMessage };
+export { pool, testConnection, closePool, sanitizeErrorMessage, QueryResult, QueryResultRow };
+export * from './query';
+export * from './transaction';
