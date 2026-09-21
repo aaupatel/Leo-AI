@@ -2,6 +2,7 @@ export interface User {
   id: string;
   email: string;
   displayName: string;
+  passwordHash?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }

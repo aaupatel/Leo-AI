@@ -1,12 +1,17 @@
 import express from 'express';
 import { config } from './config';
 import { testConnection, closePool, sanitizeErrorMessage } from './database';
+import authRoutes from './routes';
 
 const app = express();
+
+app.use(express.json());
 
 app.get('/', (_req, res) => {
   res.send('Leo AI Server is running.');
 });
+
+app.use('/api/auth', authRoutes);
 
 async function startServer(): Promise<void> {
   try {

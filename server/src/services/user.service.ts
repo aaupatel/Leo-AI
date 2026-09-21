@@ -20,7 +20,7 @@ export async function getUserByEmail(email: string): Promise<User | null> {
 
 export async function updateUserService(
   id: string,
-  updates: Partial<Pick<User, 'email' | 'displayName'>>,
+  updates: Partial<Pick<User, 'email' | 'displayName' | 'passwordHash'>>,
 ): Promise<User | null> {
   return updateUser(id, updates);
 }
